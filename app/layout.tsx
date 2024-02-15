@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeModeScript } from "flowbite-react";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,7 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
+      <head>
+        {" "}
+        <ThemeModeScript />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
