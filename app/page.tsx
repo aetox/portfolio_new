@@ -8,18 +8,12 @@ import NavBar from "./navbar";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <NavBar></NavBar>
-      <HomePage></HomePage>
-    </>
+    </div>
   );
 }
 
 function HomePage() {
-  return (
-    <div>
-      <LikeButton />
-      <Alert color="info">Alert!</Alert>
-    </div>
-  );
+  return <div></div>;
 }
