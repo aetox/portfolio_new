@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
+import { useState } from "react";
+import { DarkModeContext } from "./context/DarkModeContext";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+function Layout({ children }: { children: React.ReactNode }) {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  return (
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+      {children}
+    </DarkModeContext.Provider>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,10 +35,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        {" "}
         <ThemeModeScript />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
