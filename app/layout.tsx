@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
-import { useState } from "react";
 import { DarkModeContext } from "./context/DarkModeContext";
 
 import "./globals.css";
@@ -9,14 +8,10 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
-    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider
+      value={{ darkMode: false, toggleDarkMode: () => {} }}
+    >
       {children}
     </DarkModeContext.Provider>
   );
