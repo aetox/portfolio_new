@@ -1,51 +1,25 @@
 "use client";
-import Image from "next/image";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { Alert } from "flowbite-react";
-import NavBar from "./navbar";
+import React from "react";
+import "./globals.css"; // Add the import statement for the CSS file
 
-export default function Home() {
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const imageRef = useRef(null);
+import { useState } from "react";
+import Navbar from "./components/navbar"; // Import the Navbar component
 
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-    });
+const Home = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
-    gsap.from(subtitleRef.current, {
-      x: 100,
-      opacity: 0,
-      duration: 1,
-    });
-
-    gsap.from(imageRef.current, {
-      x: 100,
-      opacity: 0,
-      duration: 1,
-    });
-  }, []);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
     <div>
-      <NavBar></NavBar>
-      <h1 ref={titleRef}>Title</h1>
-      <h2 ref={subtitleRef}>Subtitle</h2>
-      <Image
-        ref={imageRef}
-        src="/path/to/image.jpg"
-        alt="Image"
-        width={500}
-        height={300}
-      />
+      <Navbar /> {/* Use the Navbar component */}
+      <div className="p-4">
+        <p>Ceci est un exemple de page d'accueil avec Next.js.</p>
+      </div>
     </div>
   );
-}
+};
 
-function HomePage() {
-  return <div></div>;
-}
+export default Home;
